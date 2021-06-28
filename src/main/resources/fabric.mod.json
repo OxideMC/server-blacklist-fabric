@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "serverblacklist",
+  "version": "${version}",
+
+  "name": "Server Blacklist",
+  "description": "Fabric mod to block Minecraft servers that are potentially unwanted, malicious, or pay-to-win. Uses https://github.com/OxideMC/malicious-server-blacklist",
+  "authors": [
+    "TheOddGarlic"
+  ],
+  "contact": {
+    "homepage": "https://github.com/OxideMC/server-blacklist-fabric#readme",
+    "sources": "https://github.com/OxideMC/server-blacklist-fabric"
+  },
+
+  "license": "Unlicense",
+  "icon": "assets/serverblacklist/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.github.oxidemc.serverblacklist.ServerBlacklistMod"
+    ]
+  },
+  "mixins": [
+    "serverblacklist.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  }
+}
