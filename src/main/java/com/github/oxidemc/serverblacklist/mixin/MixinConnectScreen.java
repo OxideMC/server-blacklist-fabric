@@ -21,7 +21,7 @@ public class MixinConnectScreen {
   @Inject(method = "connect(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/network/ServerAddress;)V", at = @At("HEAD"), cancellable = true)
   private void onConnect(MinecraftClient client, ServerAddress address, CallbackInfo ci) {
     String blacklist = ServerBlacklistMod.blacklist();
-    if (address.getAddress().matches(blacklist)) {
+    if (address.getAddress().toLowerCase().matches(blacklist)) {
       ServerBlacklistMod.logger().info("Blocking server " + address.getAddress());
       client.openScreen(this.parent);
       ci.cancel();
