@@ -40,8 +40,6 @@ public class ServerBlacklistMod implements ClientModInitializer {
       sb.append(")");
 
       blacklist = sb.toString();
-      
-      System.out.println(blacklist);
     } catch (Exception e) {
       e.printStackTrace();
     }
