@@ -1,7 +1,7 @@
 # Build the project and publish it on Modrinth
 
 name: publish
-on: workflow-dispatch
+on: workflow_dispatch
 
 jobs:
   build:
