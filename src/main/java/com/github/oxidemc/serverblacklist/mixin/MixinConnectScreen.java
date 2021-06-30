@@ -2,8 +2,11 @@ package com.github.oxidemc.serverblacklist.mixin;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConnectScreen;
+import net.minecraft.client.gui.screen.DisconnectedScreen;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.network.ServerAddress;
+import net.minecraft.text.TranslatableText;
 
 import com.github.oxidemc.serverblacklist.ServerBlacklistMod;
 
@@ -23,7 +26,7 @@ public class MixinConnectScreen {
     String blacklist = ServerBlacklistMod.blacklist();
     if (address.getAddress().toLowerCase().matches(blacklist)) {
       ServerBlacklistMod.logger().info("Blocking server " + address.getAddress());
-      client.openScreen(this.parent);
+      client.openScreen(new DisconnectedScreen(this.parent, ScreenTexts.CONNECT_FAILED, new TranslatableText("disconnect.genericReason", new Object[]{"Server blacklisted"})));
       ci.cancel();
     }
   }
